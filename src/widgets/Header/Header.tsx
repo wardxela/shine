@@ -1,14 +1,14 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import logo from '@/shared/assets/logo.svg';
-import { HeaderNavLink } from './HeaderNavLink';
+import Image from "next/image";
+import Link from "next/link";
+import logo from "@/shared/assets/logo.svg";
+import { HeaderNavLink } from "./HeaderNavLink";
 
 export function Header() {
   return (
     <header>
       <div className="container">
-        <div className="flex items-center h-20">
-          <Link href="/" className="font-bold flex items-center gap-3">
+        <div className="flex h-20 items-center">
+          <Link href="/" className="flex items-center gap-3 font-bold">
             <Image src={logo} alt="SHINE" />
             <span>ШАЙН</span>
           </Link>
@@ -29,12 +29,17 @@ export function Header() {
             </ul>
           </nav>
           <div className="ml-auto">
-            <button className="px-4 py-2">Войти</button>
-            <button className="bg-stone-900 px-4 py-2 text-white">
+            <Link href="/login" className="px-4 py-2">
+              Войти
+            </Link>
+            <Link
+              href="/register"
+              className="bg-stone-900 px-4 py-2 text-white"
+            >
               Зарегистрироваться
-            </button>
+            </Link>
           </div>
-          <div className="flex items-center ml-14 gap-6">
+          <div className="ml-14 flex items-center gap-6">
             <button>
               <svg
                 width="20"

@@ -1,11 +1,4 @@
-import './globals.css';
-import { Footer } from '@/widgets/Footer';
-import { Header } from '@/widgets/Header';
-
-export const metadata = {
-  title: 'ШАЙН',
-  description: 'Ателье сайт',
-};
+import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -14,11 +7,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" className="h-full">
-      <body className="flex flex-col h-full">
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <body className="h-full">{children}</body>
     </html>
   );
 }
+
+export const metadata = {
+  title: "ШАЙН",
+  description: "Ателье сайт",
+};
