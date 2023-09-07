@@ -1,17 +1,13 @@
-import Image from "next/image";
 import Link from "next/link";
-import logo from "@/shared/assets/logo.svg";
 import { HeaderNavLink } from "./HeaderNavLink";
+import { LogoLink } from "@/shared/ui/LogoLink";
 
 export function Header() {
   return (
     <header>
       <div className="container">
         <div className="flex h-20 items-center">
-          <Link href="/" className="flex items-center gap-3 font-bold">
-            <Image src={logo} alt="SHINE" />
-            <span>ШАЙН</span>
-          </Link>
+          <LogoLink />
           <nav className="ml-14">
             <ul className="flex items-center gap-10">
               <li>

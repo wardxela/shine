@@ -1,7 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import logo from '@/shared/assets/logo-dark.svg';
-import { FooterSiteLink } from './FooterSiteLink';
+import { FooterSiteLink } from "./FooterSiteLink";
+import { LogoLink } from "@/shared/ui/LogoLink";
 
 export function Footer() {
   return (
@@ -9,18 +7,15 @@ export function Footer() {
       <div className="container">
         <div className="mb-14 grid grid-cols-[2fr,5fr,2fr]">
           <div>
-            <Link href="/" className="font-bold flex items-center gap-3 mb-3">
-              <Image src={logo} alt="SHINE" />
-              <span className="text-white">ШАЙН</span>
-            </Link>
-            <p className="text-stone-400 max-w-[228px]">
+            <LogoLink isDark className="mb-3" />
+            <p className="max-w-[228px] text-stone-400">
               Шьем одежду на заказ по индивидуальным меркам и предпочтениям
               клиента
             </p>
           </div>
           <div>
-            <div className="w-max mx-auto">
-              <h5 className="text-white mb-5 font-semibold">Навигация</h5>
+            <div className="mx-auto w-max">
+              <h5 className="mb-5 font-semibold text-white">Навигация</h5>
               <div className="flex gap-14">
                 <ul className="space-y-2">
                   <li>
@@ -58,7 +53,7 @@ export function Footer() {
             </div>
           </div>
           <div>
-            <h5 className="text-white font-semibold mb-5">Соц. сети</h5>
+            <h5 className="mb-5 font-semibold text-white">Соц. сети</h5>
             <ul className="space-y-2">
               <li>
                 <a
