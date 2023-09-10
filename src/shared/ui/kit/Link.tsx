@@ -26,6 +26,7 @@ export function Link({
       className={clsx(className, {
         "text-stone-500 hover:text-stone-950 hover:underline":
           variant === "common",
+        "text-amber-600 hover:underline": variant === "accent",
       })}
     >
       {children}
