@@ -23,6 +23,7 @@ export function Button({
         {
           "bg-amber-600 text-white": variant === "primary",
           "bg-amber-950 text-white": variant === "primary-dark",
+          "border border-stone-950": variant === "primary-dark-bordered",
           "bg-stone-200 text-stone-950": variant === "secondary",
         },
       )}

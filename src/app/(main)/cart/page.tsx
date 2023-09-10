@@ -4,7 +4,7 @@ import { Button } from "@/shared/ui/kit";
 
 export default function CartPage() {
   return (
-    <main className="container grid gap-32 py-5 sm:py-10 lg:grid-cols-[1fr,330px]">
+    <main className="container grid gap-10 py-5 sm:py-10 lg:grid-cols-[1fr,330px] lg:gap-32">
       <div>
         <h1 className="mb-5 text-xl font-semibold">Корзина (n товаров)</h1>
         <hr className="mb-8 h-px bg-stone-200" />

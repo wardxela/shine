@@ -16,6 +16,7 @@ export function Link({
   children,
   type,
   variant,
+  target,
   ...props
 }: LinkProps) {
   const Component = type === "internal" ? NextLink : "a";
@@ -23,6 +24,7 @@ export function Link({
   return (
     <Component
       {...props}
+      target={target ? target : type === "external" ? "_blank" : "_self"}
       className={clsx(className, {
         "text-stone-500 hover:text-stone-950 hover:underline":
           variant === "common",

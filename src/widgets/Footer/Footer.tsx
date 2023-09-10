@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="mt-auto bg-stone-900 py-14">
       <div className="container">
-        <div className="mb-14 grid grid-cols-[2fr,5fr,2fr]">
+        <div className="mb-14 grid gap-12 md:grid-cols-[11fr,15fr,11fr] lg:grid-cols-[1fr,2fr,1fr]">
           <div>
             <LogoLink isDark className="mb-3" />
             <p className="max-w-[228px] text-stone-400">
@@ -14,9 +14,9 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <div className="mx-auto w-max">
+            <div className="w-max md:mx-auto">
               <h5 className="mb-5 font-semibold text-white">Навигация</h5>
-              <div className="flex gap-14">
+              <div className="flex flex-col gap-2 sm:flex-row sm:gap-14">
                 <ul className="space-y-2">
                   <li>
                     <FooterSiteLink href="/">Главная</FooterSiteLink>
@@ -59,6 +59,7 @@ export function Footer() {
                 <a
                   className="text-stone-400 hover:text-stone-200"
                   href="https://vk.com/wardxela"
+                  target="_blank"
                 >
                   ВКонтакте
                 </a>
@@ -67,6 +68,7 @@ export function Footer() {
                 <a
                   className="text-stone-400 hover:text-stone-200"
                   href="https://t.me/wardxela"
+                  target="_blank"
                 >
                   Telegram
                 </a>
@@ -75,6 +77,7 @@ export function Footer() {
                 <a
                   className="text-stone-400 hover:text-stone-200"
                   href="https://www.youtube.com/channel/UCYnEbUWhqWxc93u8VIme_wQ"
+                  target="_blank"
                 >
                   YouTube
                 </a>

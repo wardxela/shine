@@ -8,7 +8,7 @@ export function Header() {
       <div className="container">
         <div className="flex h-20 items-center">
           <LogoLink />
-          <nav className="ml-14">
+          <nav className="ml-14 hidden lg:block">
             <ul className="flex items-center gap-10">
               <li>
                 <HeaderNavLink href="/">Главная</HeaderNavLink>
@@ -24,7 +24,7 @@ export function Header() {
               </li>
             </ul>
           </nav>
-          <div className="ml-auto">
+          <div className="ml-auto hidden lg:block">
             <Link href="/login" className="px-4 py-2">
               Войти
             </Link>
@@ -35,7 +35,7 @@ export function Header() {
               Зарегистрироваться
             </Link>
           </div>
-          <div className="ml-14 flex items-center gap-6">
+          <div className="ml-auto flex items-center gap-6 lg:ml-14">
             <Link href="/profile">
               <svg
                 width="20"
@@ -71,6 +71,14 @@ export function Header() {
                 </g>
               </svg>
             </Link>
+            <button
+              type="button"
+              className="flex h-7 w-10 flex-col justify-between lg:hidden"
+            >
+              <span className="block h-1 w-full rounded-sm bg-black"></span>
+              <span className="block h-1 w-full rounded-sm bg-black"></span>
+              <span className="block h-1 w-full rounded-sm bg-black"></span>
+            </button>
           </div>
         </div>
       </div>
