@@ -17,9 +17,16 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={clsx(className, "px-5 py-2 text-lg font-semibold", {
-        "bg-amber-950 text-white": variant === "primary-dark",
-      })}
+      className={clsx(
+        className,
+        "block w-full px-5 py-2 text-lg font-semibold",
+        {
+          "bg-amber-600 text-white": variant === "primary",
+          "bg-amber-950 text-white": variant === "primary-dark",
+          "bg-stone-200 text-stone-950": variant === "secondary",
+        },
+      )}
+      {...props}
     >
       {children}
     </button>

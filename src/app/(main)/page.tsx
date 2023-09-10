@@ -10,7 +10,7 @@ import textUsImg from "./_img/text-us.png";
 import { FavoriteProductCard } from "@/entities/product";
 import { TextUsForm } from "@/features/mail";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main>
       <section>
