@@ -1,18 +1,18 @@
 import Image, { StaticImageData } from "next/image";
 
-export type FavoriteProductCardProps = {
+export type ProductFavoriteCardProps = {
   image: StaticImageData;
   title: string;
   price: number;
   oldPrice: number;
 };
 
-export function FavoriteProductCard({
+export function ProductFavoriteCard({
   image,
   title,
   price,
   oldPrice,
-}: FavoriteProductCardProps) {
+}: ProductFavoriteCardProps) {
   return (
     <article className="flex flex-col items-center text-center">
       <div className="mb-3 self-stretch">

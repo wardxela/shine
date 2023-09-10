@@ -7,7 +7,7 @@ import fav1 from "./_img/fav1.png";
 import fav2 from "./_img/fav2.png";
 import fav3 from "./_img/fav3.png";
 import textUsImg from "./_img/text-us.png";
-import { FavoriteProductCard } from "@/entities/product";
+import { ProductFavoriteCard } from "@/entities/product";
 import { TextUsForm } from "@/features/mail";
 
 export default function HomePage() {
@@ -33,25 +33,25 @@ export default function HomePage() {
         <div className="container">
           <SectionTitle className="mb-14">Наши работы</SectionTitle>
           <div className="mb-10 grid grid-cols-4 justify-between gap-10">
-            <FavoriteProductCard
+            <ProductFavoriteCard
               image={fav1}
               price={99}
               oldPrice={99}
               title="Женское пальто"
             />
-            <FavoriteProductCard
+            <ProductFavoriteCard
               image={fav2}
               price={99}
               oldPrice={99}
               title="Мужской костюм"
             />
-            <FavoriteProductCard
+            <ProductFavoriteCard
               image={fav2}
               price={99}
               oldPrice={99}
               title="Мужской костюм"
             />
-            <FavoriteProductCard
+            <ProductFavoriteCard
               image={fav3}
               price={99}
               oldPrice={99}

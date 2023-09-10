@@ -1,6 +1,7 @@
 import Image from "next/image";
 import bgImg from "./_img/login.jpg";
-import { Button, Checkbox, TextField, Link } from "@/shared/ui/kit";
+import { Link } from "@/shared/ui/kit";
+import { LoginForm } from "@/features/auth";
 
 export default function LoginPage() {
   return (
@@ -15,26 +16,7 @@ export default function LoginPage() {
         <div className="ml-auto flex h-full w-full overflow-auto lg:w-1/2">
           <div className="m-auto w-full max-w-xs p-5">
             <h1 className="mb-14 text-center text-4xl font-semibold">Вход</h1>
-            <form action="" className="mb-14 flex flex-col">
-              <TextField
-                type="email"
-                name="email"
-                placeholder="Email"
-                className="mb-5"
-              />
-              <TextField
-                type="password"
-                name="password"
-                placeholder="Пароль"
-                className="mb-5"
-              />
-              <Checkbox
-                name="remember-me"
-                label="Запомнить меня"
-                className="mb-7"
-              />
-              <Button variant="primary-dark">Войти</Button>
-            </form>
+            <LoginForm />
             <div className="flex justify-between">
               <Link type="internal" variant="common" href="/">
                 Главная
