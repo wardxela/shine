@@ -1,4 +1,4 @@
-import { CategoriesFilter } from "@/features/catalog";
+import { CategoriesFilter, PriceFilter } from "@/features/catalog";
 
 import man from "./_img/man.png";
 import { ProductCard } from "@/entities/product";
@@ -11,6 +11,8 @@ export default function CatalogPage() {
           <div>
             <h2 className="mb-7 text-xl font-semibold">Категории</h2>
             <CategoriesFilter />
+            <hr className="mb-6" />
+            <PriceFilter />
           </div>
         </div>
         <div className="flex-grow">
