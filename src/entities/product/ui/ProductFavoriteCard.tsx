@@ -15,8 +15,12 @@ export function ProductFavoriteCard({
 }: ProductFavoriteCardProps) {
   return (
     <article className="flex flex-col items-center text-center">
-      <div className="mb-3 self-stretch">
-        <Image src={image} className="w-full" alt={title} />
+      <div className="relative mb-3 max-h-96 self-stretch pb-[75%] sm:max-h-none md:pb-[144%]">
+        <Image
+          src={image}
+          className="absolute left-0 top-0 h-full w-full object-cover"
+          alt={title}
+        />
       </div>
       <h6 className="mb-2 text-xl">{title}</h6>
       <p className="space-x-2">

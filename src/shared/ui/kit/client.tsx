@@ -1,3 +1,3 @@
 export * from "./TextField";
 export * from "./RadioButton";
-export * from "./SliderRange";
+export * from "./ColorCheckbox";

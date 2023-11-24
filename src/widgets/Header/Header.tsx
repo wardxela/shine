@@ -1,15 +1,36 @@
+"use client";
+
 import Link from "next/link";
 import { HeaderNavLink } from "./HeaderNavLink";
 import { LogoLink } from "@/shared/ui/LogoLink";
 
+import { useEffect, useState } from "react";
+import { clsx } from "@/shared/ui/clsx";
+import { usePathname } from "next/navigation";
+
 export function Header() {
+  const [isVisible, setIsVisible] = useState(false);
+  const path = usePathname();
+
+  useEffect(() => {
+    setIsVisible(false);
+  }, [path]);
+
   return (
     <header>
       <div className="container">
         <div className="flex h-20 items-center">
-          <LogoLink />
-          <nav className="ml-14 hidden lg:block">
-            <ul className="flex items-center gap-10">
+          <LogoLink className="z-50" />
+          <nav
+            className={clsx(
+              "fixed left-0 top-0 z-40 h-full w-full bg-white px-10 py-24 transition-transform lg:static lg:ml-14 lg:block",
+              {
+                "-translate-x-full lg:translate-x-0 lg:bg-transparent lg:p-0":
+                  !isVisible,
+              },
+            )}
+          >
+            <ul className="h-full items-center gap-10 space-y-8 lg:flex lg:space-y-0">
               <li>
                 <HeaderNavLink href="/">Главная</HeaderNavLink>
               </li>
@@ -36,7 +57,7 @@ export function Header() {
             </Link>
           </div>
           <div className="ml-auto flex items-center gap-6 lg:ml-14">
-            <Link href="/profile">
+            <Link href="/profile" className="z-50">
               <svg
                 width="20"
                 height="21"
@@ -52,7 +73,7 @@ export function Header() {
                 />
               </svg>
             </Link>
-            <Link href="/cart">
+            <Link href="/cart" className="z-50">
               <svg
                 width="20"
                 height="17"
@@ -73,11 +94,29 @@ export function Header() {
             </Link>
             <button
               type="button"
-              className="flex h-7 w-10 flex-col justify-between lg:hidden"
+              className="relative z-50 flex h-7 w-10 lg:hidden"
+              onClick={() => setIsVisible((p) => !p)}
             >
-              <span className="block h-1 w-full rounded-sm bg-black"></span>
-              <span className="block h-1 w-full rounded-sm bg-black"></span>
-              <span className="block h-1 w-full rounded-sm bg-black"></span>
+              <span
+                className={clsx(
+                  "absolute left-0 top-0 block h-1 w-full rounded-sm bg-black transition-transform",
+                  isVisible ? "top-1/2 -translate-y-1/2 rotate-45" : "",
+                )}
+              ></span>
+              <span
+                className={clsx(
+                  "absolute left-0 top-1/2 block h-1 w-full -translate-y-1/2 rounded-sm bg-black transition-transform",
+                  isVisible ? "scale-0" : "scale-100",
+                )}
+              ></span>
+              <span
+                className={clsx(
+                  "absolute bottom-0 left-0 block h-1 w-full rounded-sm bg-black transition-transform",
+                  isVisible
+                    ? "bottom-1/2 translate-y-1/2 -rotate-45"
+                    : "bottom-0",
+                )}
+              ></span>
             </button>
           </div>
         </div>

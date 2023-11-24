@@ -1,18 +1,26 @@
-import { CategoriesFilter, PriceFilter } from "@/features/catalog";
+import {
+  CategoriesFilter,
+  ColorsFilter,
+  PriceFilter,
+} from "@/features/catalog";
 
 import man from "./_img/man.png";
 import { ProductCard } from "@/entities/product";
+import { BrandsFilter } from "@/features/catalog/filters/BrandsFilter";
 
 export default function CatalogPage() {
   return (
     <main className="pb-14 pt-10">
       <div className="container flex gap-10">
         <div className="shrink-0 basis-56">
-          <div>
-            <h2 className="mb-7 text-xl font-semibold">Категории</h2>
-            <CategoriesFilter />
-            <hr className="mb-6" />
+          <div className="space-y-14">
+            <div>
+              <CategoriesFilter />
+              <hr />
+            </div>
             <PriceFilter />
+            <BrandsFilter />
+            <ColorsFilter />
           </div>
         </div>
         <div className="flex-grow">

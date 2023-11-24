@@ -3,6 +3,7 @@
 import { clsx } from "@/shared/ui/clsx";
 import { useState } from "react";
 import { RadioButton, RadioButtonGroup } from "@/shared/ui/kit/client";
+import { FilterTitle } from "../FilterTitle";
 
 const demoCategories = [
   {
@@ -35,18 +36,21 @@ export function CategoriesFilter() {
   const [selected, setSelected] = useState("Все");
 
   return (
-    <div className="space-y-3">
-      <RadioButtonGroup selected={selected} onChange={setSelected}>
-        {demoCategories.map((category) => (
-          <RadioButton key={category.name} value={category.name}>
-            <CategoryRadioButton
-              name={category.name}
-              count={category.count}
-              selected={category.name === selected}
-            />
-          </RadioButton>
-        ))}
-      </RadioButtonGroup>
+    <div>
+      <FilterTitle className="mb-6">Категории</FilterTitle>
+      <div className="space-y-3">
+        <RadioButtonGroup selected={selected} onChange={setSelected}>
+          {demoCategories.map((category) => (
+            <RadioButton key={category.name} value={category.name}>
+              <CategoryRadioButton
+                name={category.name}
+                count={category.count}
+                selected={category.name === selected}
+              />
+            </RadioButton>
+          ))}
+        </RadioButtonGroup>
+      </div>
     </div>
   );
 }

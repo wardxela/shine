@@ -1,3 +1,5 @@
+"use client";
+
 import { Merge } from "@/shared/type-utils";
 import {
   ComponentPropsWithoutRef,

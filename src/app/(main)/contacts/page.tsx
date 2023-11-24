@@ -4,19 +4,23 @@ import bgImg from "./_img/bg.jpg";
 export default function ContactsPage() {
   return (
     <main>
-      <section className="relative mb-36 flex h-screen">
+      <section className="relative mb-10 flex h-96 md:mb-24 lg:mb-36 lg:h-screen">
         <Image
           src={bgImg}
           alt="Контакты"
           className="absolute left-0 top-0 -z-10 h-full w-full object-cover brightness-50"
         />
         <div className="m-auto text-center">
-          <h1 className="mb-5 text-6xl font-bold text-white">Контакты</h1>
-          <p className="text-xl text-white">Свяжись с нами удобным способом</p>
+          <h1 className="mb-5 text-4xl font-bold text-white md:text-6xl">
+            Контакты
+          </h1>
+          <p className="text-white md:text-xl">
+            Свяжись с нами удобным способом
+          </p>
         </div>
       </section>
-      <div className="container mb-36 flex justify-around gap-24">
-        <div className="basis-80">
+      <div className="container mb-24 flex flex-wrap justify-around gap-10 md:gap-24 lg:mb-36">
+        <div className="flex basis-80 flex-col items-center">
           <div className="mb-7">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +44,7 @@ export default function ContactsPage() {
             </svg>
           </div>
           <h4 className="mb-3 text-2xl">Телефон</h4>
-          <ul>
+          <ul className="text-center">
             <li>
               <a
                 className="text-xl leading-9 text-stone-500"
@@ -59,7 +63,7 @@ export default function ContactsPage() {
             </li>
           </ul>
         </div>
-        <div className="basis-80">
+        <div className="flex basis-80 flex-col items-center">
           <div className="mb-7">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -83,11 +87,11 @@ export default function ContactsPage() {
             </svg>
           </div>
           <h4 className="mb-3 text-2xl">Адрес</h4>
-          <p className="text-xl leading-9 text-stone-500">
+          <p className="text-center text-xl leading-9 text-stone-500">
             Московская область, город Москва, пл. Балканская, 67
           </p>
         </div>
-        <div className="basis-80">
+        <div className="flex basis-80 flex-col items-center">
           <div className="mb-7">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +107,7 @@ export default function ContactsPage() {
             </svg>
           </div>
           <h4 className="mb-3 text-2xl">Почта</h4>
-          <ul>
+          <ul className="text-center">
             <li>
               <a
                 className="text-xl leading-9 text-stone-500"
@@ -123,7 +127,7 @@ export default function ContactsPage() {
           </ul>
         </div>
       </div>
-      <div className="container mb-28">
+      <div className="container mb-24">
         <div className="relative overflow-hidden">
           <iframe
             src="https://yandex.com/map-widget/v1/?ll=39.764155%2C54.605016&mode=poi&poi%5Bpoint%5D=39.757432%2C54.621241&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1118277251&z=12.72"

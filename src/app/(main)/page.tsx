@@ -2,29 +2,30 @@ import Image from "next/image";
 
 import { SectionTitle } from "@/shared/ui/kit";
 import Link from "next/link";
+import { ProductFavoriteCard } from "@/entities/product";
+import { TextUsForm } from "@/features/mail";
+
 import hero from "./_img/hero.png";
 import fav1 from "./_img/fav1.png";
 import fav2 from "./_img/fav2.png";
 import fav3 from "./_img/fav3.png";
 import textUsImg from "./_img/text-us.png";
-import { ProductFavoriteCard } from "@/entities/product";
-import { TextUsForm } from "@/features/mail";
 
 export default function HomePage() {
   return (
     <main>
-      <section>
-        <div className="container flex items-center justify-between">
-          <div className="p-20">
-            <h1 className="mb-9 text-6xl font-bold">ШАЙН</h1>
-            <p className="mb-9 max-w-md text-2xl">
+      <section className="py-16 sm:py-20">
+        <div className="container flex items-center justify-between gap-4">
+          <div>
+            <h1 className="mb-9 text-4xl font-bold md:text-6xl">ШАЙН</h1>
+            <p className="mb-9 max-w-md text-lg md:text-2xl">
               Одежда из лучших тканей на любой размер. Оформи заказ уже сегодня.
             </p>
-            <button className="bg-amber-800 px-20 py-4 text-2xl text-white">
+            <button className="bg-amber-800 px-10 py-2 text-lg text-white md:px-20 md:py-4 md:text-2xl">
               Написать
             </button>
           </div>
-          <div className="p-20">
+          <div className="hidden p-4 sm:block">
             <Image src={hero} alt="Пальто" />
           </div>
         </div>
@@ -32,7 +33,7 @@ export default function HomePage() {
       <section className="mb-20">
         <div className="container">
           <SectionTitle className="mb-14">Наши работы</SectionTitle>
-          <div className="mb-10 grid grid-cols-4 justify-between gap-10">
+          <div className="mb-10 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] justify-between gap-10">
             <ProductFavoriteCard
               image={fav1}
               price={99}
@@ -61,7 +62,7 @@ export default function HomePage() {
           <div className="grid justify-center">
             <Link
               href="/catalog"
-              className="inline-block border-2 border-amber-950 px-16 py-4 text-xl"
+              className="inline-block border-2 border-amber-950 px-16 py-4 text-xl transition-colors hover:bg-amber-950 hover:text-white"
             >
               Смотреть
             </Link>
@@ -71,7 +72,7 @@ export default function HomePage() {
       <section className="mb-20">
         <div className="container">
           <SectionTitle className="mb-14">Почему выбирают нас</SectionTitle>
-          <div className="grid grid-cols-3 gap-16">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-16">
             <div>
               <div className="mb-7">
                 <svg
@@ -143,12 +144,16 @@ export default function HomePage() {
         <div className="container">
           <SectionTitle className="mb-14">Напишите нам</SectionTitle>
         </div>
-        <div className="grid grid-cols-2">
-          <div className="flex items-center bg-stone-800 py-12 pl-[max(calc((100vw-1536px+16px)/2),16px)]">
+        <div className="relative grid lg:grid-cols-2">
+          <div className="flex items-center py-12 pl-4 pr-4 md:pl-16 lg:bg-stone-800">
             <TextUsForm className="grow" />
           </div>
-          <div>
-            <Image src={textUsImg} alt="Напишите нам" className="w-full" />
+          <div className="lg:relative">
+            <Image
+              src={textUsImg}
+              alt="Напишите нам"
+              className="absolute left-0 top-0 -z-10 h-full w-full object-cover brightness-[0.25]"
+            />
           </div>
         </div>
       </section>
