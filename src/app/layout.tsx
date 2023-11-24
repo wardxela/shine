@@ -1,6 +1,10 @@
-import { clsx } from "@/shared/ui/clsx";
 import "./globals.css";
+
 import { Open_Sans } from "next/font/google";
+import { cookies } from "next/headers";
+import { clsx } from "@/shared/ui/clsx";
+
+import { TRPCReactProvider } from "@/trpc/client";
 
 const openSans = Open_Sans({
   weight: ["400", "600", "700"],
@@ -14,7 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" className={clsx("h-full", openSans.className)}>
-      <body className="h-full">{children}</body>
+      <body className="h-full">
+        <TRPCReactProvider cookies={cookies().toString()}>
+          {children}
+        </TRPCReactProvider>
+      </body>
     </html>
   );
 }
