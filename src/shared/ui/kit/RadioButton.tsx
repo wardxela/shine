@@ -3,9 +3,7 @@
 import { Merge } from "@/shared/type-utils";
 import {
   ComponentPropsWithoutRef,
-  Dispatch,
   PropsWithChildren,
-  SetStateAction,
   createContext,
   useContext,
   useId,
@@ -14,7 +12,7 @@ import {
 export type RadioButtonGroupContext = {
   name: string;
   selected: string;
-  onChange: Dispatch<SetStateAction<string>>;
+  onChange: (value: string) => void;
 };
 
 const Context = createContext<RadioButtonGroupContext>({
@@ -24,7 +22,7 @@ const Context = createContext<RadioButtonGroupContext>({
 });
 
 export type RadioButtonGroupProps = PropsWithChildren<{
-  onChange: Dispatch<SetStateAction<string>>;
+  onChange: (value: string) => void;
   selected: string;
 }>;
 

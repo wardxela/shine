@@ -40,7 +40,7 @@ export const ColorCheckbox = forwardRef<HTMLInputElement, ColorCheckboxProps>(
             <path
               stroke={isDark ? "black" : "white"}
               d="M2 6L5.6 10L14 2"
-              stroke-width="3"
+              strokeWidth="3"
             />
           </svg>
         </label>

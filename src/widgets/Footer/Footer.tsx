@@ -1,7 +1,14 @@
+import { Session } from "next-auth";
 import { FooterSiteLink } from "./FooterSiteLink";
 import { LogoLink } from "@/shared/ui/LogoLink";
 
-export function Footer() {
+export type FooterProps = {
+  session: Session | null;
+};
+
+export function Footer({ session }: FooterProps) {
+  const isAuthenticated = !!session;
+
   return (
     <footer className="mt-auto bg-stone-900 py-14">
       <div className="container">
@@ -32,22 +39,29 @@ export function Footer() {
                   </li>
                 </ul>
                 <ul className="space-y-2">
-                  <li>
-                    <FooterSiteLink href="/profile">
-                      Личный кабинет
-                    </FooterSiteLink>
-                  </li>
-                  <li>
-                    <FooterSiteLink href="/cart">Корзина</FooterSiteLink>
-                  </li>
-                  <li>
-                    <FooterSiteLink href="/login">Войти</FooterSiteLink>
-                  </li>
-                  <li>
-                    <FooterSiteLink href="/register">
-                      Зарегистрироваться
-                    </FooterSiteLink>
-                  </li>
+                  {isAuthenticated ? (
+                    <>
+                      <li>
+                        <FooterSiteLink href="/profile">
+                          Личный кабинет
+                        </FooterSiteLink>
+                      </li>
+                      <li>
+                        <FooterSiteLink href="/cart">Корзина</FooterSiteLink>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li>
+                        <FooterSiteLink href="/login">Войти</FooterSiteLink>
+                      </li>
+                      <li>
+                        <FooterSiteLink href="/register">
+                          Зарегистрироваться
+                        </FooterSiteLink>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>

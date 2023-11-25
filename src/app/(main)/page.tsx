@@ -21,9 +21,12 @@ export default function HomePage() {
             <p className="mb-9 max-w-md text-lg md:text-2xl">
               Одежда из лучших тканей на любой размер. Оформи заказ уже сегодня.
             </p>
-            <button className="bg-amber-800 px-10 py-2 text-lg text-white md:px-20 md:py-4 md:text-2xl">
+            <a
+              href="#mail-us"
+              className="bg-amber-800 px-10 py-2 text-lg text-white md:px-20 md:py-4 md:text-2xl"
+            >
               Написать
-            </button>
+            </a>
           </div>
           <div className="hidden p-4 sm:block">
             <Image src={hero} alt="Пальто" />
@@ -140,21 +143,19 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <section>
+      <section id="mail-us">
         <div className="container">
           <SectionTitle className="mb-14">Напишите нам</SectionTitle>
         </div>
-        <div className="relative grid lg:grid-cols-2">
-          <div className="flex items-center py-12 pl-4 pr-4 md:pl-16 lg:bg-stone-800">
+        <div className="relative py-10 lg:bg-stone-800">
+          <div className="container">
             <TextUsForm className="grow" />
           </div>
-          <div className="lg:relative">
-            <Image
-              src={textUsImg}
-              alt="Напишите нам"
-              className="absolute left-0 top-0 -z-10 h-full w-full object-cover brightness-[0.25]"
-            />
-          </div>
+          <Image
+            src={textUsImg}
+            alt="Напишите нам"
+            className="absolute left-0 right-0 top-0 -z-10 h-full w-full object-cover brightness-[0.25] lg:left-1/2 lg:right-0 lg:z-10 lg:w-1/2 lg:brightness-50"
+          />
         </div>
       </section>
     </main>

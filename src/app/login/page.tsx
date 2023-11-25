@@ -1,9 +1,13 @@
 import Image from "next/image";
 import bgImg from "./_img/login.jpg";
-import { Link } from "@/shared/ui/kit";
+import { ErrorBox, Link } from "@/shared/ui/kit";
 import { LoginForm } from "@/features/auth";
 
-export default function LoginPage() {
+export default function LoginPage({
+  searchParams,
+}: {
+  searchParams: { error?: string };
+}) {
   return (
     <main className="h-full">
       <div className="relative h-full w-full overflow-hidden">
@@ -25,6 +29,9 @@ export default function LoginPage() {
                 Регистрация
               </Link>
             </div>
+            {searchParams.error ? (
+              <ErrorBox className="mt-8">Неверный логин и/или пароль</ErrorBox>
+            ) : null}
           </div>
         </div>
       </div>

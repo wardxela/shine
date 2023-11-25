@@ -1,51 +1,56 @@
 "use client";
 
 import { clsx } from "@/shared/ui/clsx";
-import { useState } from "react";
 import { RadioButton, RadioButtonGroup } from "@/shared/ui/kit/client";
 import { FilterTitle } from "../FilterTitle";
+import { RouterOutputs } from "@/trpc/shared";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-const demoCategories = [
-  {
-    name: "Все",
-    count: 123,
-  },
-  {
-    name: "Мужское",
-    count: 89,
-  },
-  {
-    name: "Женское",
-    count: 123,
-  },
-  {
-    name: "Пальто",
-    count: 45,
-  },
-  {
-    name: "Платье",
-    count: 23,
-  },
-  {
-    name: "Брюки",
-    count: 23,
-  },
-];
+export type CategoriesFilterProps = {
+  categories: RouterOutputs["category"]["list"];
+};
 
-export function CategoriesFilter() {
-  const [selected, setSelected] = useState("Все");
+export function CategoriesFilter({ categories }: CategoriesFilterProps) {
+  const sum = categories.reduce(
+    (res, category) => res + category._count.products,
+    0,
+  );
+
+  const router = useRouter();
+  const path = usePathname();
+  const searchParams = useSearchParams();
+
+  const selectedCategory = searchParams.get("category");
 
   return (
     <div>
       <FilterTitle className="mb-6">Категории</FilterTitle>
       <div className="space-y-3">
-        <RadioButtonGroup selected={selected} onChange={setSelected}>
-          {demoCategories.map((category) => (
-            <RadioButton key={category.name} value={category.name}>
+        <RadioButtonGroup
+          selected={selectedCategory || ""}
+          onChange={(category) => {
+            const newURLSearchParams = new URLSearchParams(searchParams);
+            if (category === "Все") {
+              newURLSearchParams.delete("category");
+            } else {
+              newURLSearchParams.set("category", category);
+            }
+            router.push(`${path}?${newURLSearchParams}`);
+          }}
+        >
+          <RadioButton value="Все">
+            <CategoryRadioButton
+              name="Все"
+              count={sum}
+              selected={!searchParams.get("category")}
+            />
+          </RadioButton>
+          {categories.map((category) => (
+            <RadioButton key={category.id} value={category.name}>
               <CategoryRadioButton
                 name={category.name}
-                count={category.count}
-                selected={category.name === selected}
+                count={category._count.products}
+                selected={selectedCategory === category.name}
               />
             </RadioButton>
           ))}

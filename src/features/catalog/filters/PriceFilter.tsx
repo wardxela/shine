@@ -3,17 +3,37 @@
 import { clsx } from "@/shared/ui/clsx";
 import { ComponentPropsWithRef, forwardRef, useId, useState } from "react";
 import { FilterTitle } from "../FilterTitle";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export function PriceFilter() {
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(2000);
+  const router = useRouter();
+  const path = usePathname();
+  const searchParams = useSearchParams();
 
   return (
     <div>
       <FilterTitle className="mb-6">Цена</FilterTitle>
       <div className="grid grid-cols-[90px,90px] justify-between">
-        <Input label="От" />
-        <Input label="До" />
+        <Input
+          type="number"
+          value={searchParams.get("price_from") || ""}
+          label="От"
+          onChange={(e) => {
+            const newURLSearchParams = new URLSearchParams(searchParams);
+            newURLSearchParams.set("price_from", e.currentTarget.value);
+            router.push(`${path}?${newURLSearchParams}`);
+          }}
+        />
+        <Input
+          type="number"
+          value={searchParams.get("price_to") || ""}
+          label="До"
+          onChange={(e) => {
+            const newURLSearchParams = new URLSearchParams(searchParams);
+            newURLSearchParams.set("price_to", e.currentTarget.value);
+            router.push(`${path}?${newURLSearchParams}`);
+          }}
+        />
       </div>
     </div>
   );
