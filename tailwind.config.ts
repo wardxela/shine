@@ -1,12 +1,12 @@
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss";
 
 const config = {
-  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       container: {
         center: true,
-        padding: '16px',
+        padding: "16px",
       },
     },
   },

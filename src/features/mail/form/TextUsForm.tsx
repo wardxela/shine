@@ -1,7 +1,6 @@
-"use client";
-
 import { useId } from "react";
 import { clsx } from "@/shared/ui/clsx";
+import { sendMail } from "./send-mail";
 
 export type TextUsFormProps = {
   className?: string;
@@ -13,7 +12,7 @@ export function TextUsForm({ className }: TextUsFormProps) {
   const textAreaId = useId();
 
   return (
-    <form action="#" className={clsx(className, "space-y-6")}>
+    <form action={sendMail} className={clsx(className, "space-y-6")}>
       <div>
         <label
           htmlFor={nameId}

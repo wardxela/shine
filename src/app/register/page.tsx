@@ -2,12 +2,11 @@ import bgImg from "./_img/bg.png";
 
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { ZodError } from "zod";
 
 import { LogoLink } from "@/shared/ui/LogoLink";
 import { Link } from "@/shared/ui/kit";
 import { Button } from "@/shared/ui/kit";
-import { TextField } from "@/shared/ui/kit/client";
+import { Notification, TextField } from "@/shared/ui/kit/client";
 import { api } from "@/trpc/server";
 import { UserRegisterInputSchema } from "@/server/api/routers/auth";
 import { URLSearchParams } from "url";
@@ -64,7 +63,6 @@ export default function RegisterPage({
         <div className="z-10 mx-auto max-w-2xl bg-white px-4 py-4 sm:absolute sm:left-1/2 sm:top-1/2 sm:w-full sm:-translate-x-1/2 sm:-translate-y-1/2 sm:px-10 sm:py-14 sm:shadow-md lg:static lg:left-0 lg:top-0 lg:my-auto lg:translate-x-0 lg:translate-y-0 lg:p-0 lg:shadow-none">
           <h1 className="pb-3 text-2xl font-bold">Регистрация</h1>
           <p className="mb-8 text-stone-700">Заполните данные о себе</p>
-          <p className="mb-8 text-red-600">{searchParams?.error}</p>
           <form action={register} className="mb-12 grid gap-6 sm:grid-cols-2">
             <TextField type="input" name="name" placeholder="Имя" />
             <TextField type="input" name="last_name" placeholder="Фамилия" />
@@ -104,6 +102,13 @@ export default function RegisterPage({
           className="absolute left-0 top-0 h-full w-full object-cover"
         />
       </div>
+      {searchParams?.error ? (
+        <Notification
+          type="error"
+          title="Ошибка"
+          message={searchParams.error}
+        />
+      ) : null}
     </main>
   );
 }

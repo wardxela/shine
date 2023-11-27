@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { SectionTitle } from "@/shared/ui/kit";
+import { Notification } from "@/shared/ui/kit/client";
 import Link from "next/link";
 import { ProductFavoriteCard } from "@/entities/product";
 import { TextUsForm } from "@/features/mail";
@@ -11,7 +12,14 @@ import fav2 from "./_img/fav2.png";
 import fav3 from "./_img/fav3.png";
 import textUsImg from "./_img/text-us.png";
 
-export default function HomePage() {
+export type HomePageProps = {
+  searchParams: {
+    error?: string;
+    success?: string;
+  };
+};
+
+export default function HomePage({ searchParams }: HomePageProps) {
   return (
     <main>
       <section className="py-16 sm:py-20">
@@ -158,6 +166,19 @@ export default function HomePage() {
           />
         </div>
       </section>
+      {searchParams.error ? (
+        <Notification
+          type="error"
+          title="Ошибка"
+          message={searchParams.error}
+        />
+      ) : searchParams.success ? (
+        <Notification
+          type="success"
+          title="Успех"
+          message={searchParams.success}
+        />
+      ) : null}
     </main>
   );
 }

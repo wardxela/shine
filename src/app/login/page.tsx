@@ -1,6 +1,7 @@
 import Image from "next/image";
 import bgImg from "./_img/login.jpg";
-import { ErrorBox, Link } from "@/shared/ui/kit";
+import { Link } from "@/shared/ui/kit";
+import { Notification } from "@/shared/ui/kit/client";
 import { LoginForm } from "@/features/auth";
 
 export default function LoginPage({
@@ -30,7 +31,11 @@ export default function LoginPage({
               </Link>
             </div>
             {searchParams.error ? (
-              <ErrorBox className="mt-8">Неверный логин и/или пароль</ErrorBox>
+              <Notification
+                type="error"
+                title="Ошибка"
+                message="Неверный логин и/или пароль"
+              />
             ) : null}
           </div>
         </div>
