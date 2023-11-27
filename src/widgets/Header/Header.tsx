@@ -20,6 +20,10 @@ export function Header({ session }: HeaderProps) {
   const isAuthenticated = !!session;
 
   useEffect(() => {
+    document.body.style.overflow = isVisible ? "hidden" : "";
+  }, [isVisible]);
+
+  useEffect(() => {
     setIsVisible(false);
   }, [path]);
 
