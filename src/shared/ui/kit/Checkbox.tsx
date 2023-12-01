@@ -11,7 +11,7 @@ export function Checkbox({ className, label, ...props }: CheckboxProps) {
   return (
     <label className={clsx(className, "flex items-center gap-3")}>
       <input type="checkbox" className="peer sr-only" {...props} />
-      <div className="grid h-5 w-5 place-items-center border-2 border-stone-400 peer-checked:border-amber-600 peer-focus:border-amber-600 [&>svg]:hidden peer-checked:[&>svg]:block">
+      <div className="grid h-5 w-5 place-items-center border-2 border-stone-400 peer-checked:border-amber-600 peer-focus:border-amber-600 peer-disabled:opacity-50 [&>svg]:hidden peer-checked:[&>svg]:block">
         <svg
           width="12"
           height="10"
@@ -27,7 +27,7 @@ export function Checkbox({ className, label, ...props }: CheckboxProps) {
         </svg>
       </div>
       {label ? (
-        <span className="select-none text-sm text-stone-500 peer-checked:text-black">
+        <span className="select-none text-sm text-stone-500 peer-checked:text-black peer-disabled:opacity-50">
           {label}
         </span>
       ) : null}

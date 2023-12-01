@@ -8,14 +8,10 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export type CategoriesFilterProps = {
   categories: RouterOutputs["category"]["list"];
+  count: number;
 };
 
-export function CategoriesFilter({ categories }: CategoriesFilterProps) {
-  const sum = categories.reduce(
-    (res, category) => res + category._count.products,
-    0,
-  );
-
+export function CategoriesFilter({ categories, count }: CategoriesFilterProps) {
   const router = useRouter();
   const path = usePathname();
   const searchParams = useSearchParams();
@@ -41,7 +37,7 @@ export function CategoriesFilter({ categories }: CategoriesFilterProps) {
           <RadioButton value="Все">
             <CategoryRadioButton
               name="Все"
-              count={sum}
+              count={count}
               selected={!searchParams.get("category")}
             />
           </RadioButton>

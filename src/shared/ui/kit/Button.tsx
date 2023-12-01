@@ -19,7 +19,7 @@ export function Button({
     <button
       className={clsx(
         className,
-        "block w-full px-5 py-2 text-lg font-semibold",
+        "block w-full px-5 py-2 text-lg font-semibold disabled:opacity-50",
         {
           "bg-amber-600 text-white": variant === "primary",
           "bg-amber-950 text-white": variant === "primary-dark",

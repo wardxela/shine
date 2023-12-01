@@ -7,10 +7,8 @@ import { ProductFavoriteCard } from "@/entities/product";
 import { TextUsForm } from "@/features/mail";
 
 import hero from "./_img/hero.png";
-import fav1 from "./_img/fav1.png";
-import fav2 from "./_img/fav2.png";
-import fav3 from "./_img/fav3.png";
 import textUsImg from "./_img/text-us.png";
+import { api } from "@/trpc/server";
 
 export type HomePageProps = {
   searchParams: {
@@ -19,7 +17,9 @@ export type HomePageProps = {
   };
 };
 
-export default function HomePage({ searchParams }: HomePageProps) {
+export default async function HomePage({ searchParams }: HomePageProps) {
+  const products = await api.product.list.query({ take: 4 });
+
   return (
     <main>
       <section className="py-16 sm:py-20">
@@ -31,7 +31,7 @@ export default function HomePage({ searchParams }: HomePageProps) {
             </p>
             <a
               href="#mail-us"
-              className="bg-amber-800 px-10 py-2 text-lg text-white md:px-20 md:py-4 md:text-2xl"
+              className="inline-block bg-amber-800 px-10 py-2 text-lg text-white md:px-20 md:py-4 md:text-2xl"
             >
               Написать
             </a>
@@ -44,31 +44,17 @@ export default function HomePage({ searchParams }: HomePageProps) {
       <section className="mb-20">
         <div className="container">
           <SectionTitle className="mb-14">Наши работы</SectionTitle>
-          <div className="mb-10 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] justify-between gap-10">
-            <ProductFavoriteCard
-              image={fav1}
-              price={99}
-              oldPrice={99}
-              title="Женское пальто"
-            />
-            <ProductFavoriteCard
-              image={fav2}
-              price={99}
-              oldPrice={99}
-              title="Мужской костюм"
-            />
-            <ProductFavoriteCard
-              image={fav2}
-              price={99}
-              oldPrice={99}
-              title="Мужской костюм"
-            />
-            <ProductFavoriteCard
-              image={fav3}
-              price={99}
-              oldPrice={99}
-              title="Женское платье"
-            />
+          <div className="mb-10 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] justify-between gap-10">
+            {products.map((product) => (
+              <ProductFavoriteCard
+                key={product.id}
+                title={product.title}
+                image={product.image}
+                price={product.price}
+                oldPrice={product.oldPrice}
+                href={`/catalog/${product.id}`}
+              />
+            ))}
           </div>
           <div className="grid justify-center">
             <Link

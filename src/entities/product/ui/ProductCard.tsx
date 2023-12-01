@@ -1,12 +1,14 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import Link from "next/link";
 
 export type ProductCardProps = {
-  image: StaticImageData;
+  image: string;
   title: string;
   price: number;
   oldPrice: number | null;
   isNew: boolean;
   hasDiscount: boolean;
+  href: string;
 };
 
 export function ProductCard({
@@ -14,14 +16,26 @@ export function ProductCard({
   title,
   price,
   oldPrice,
+  href,
   isNew,
   hasDiscount,
 }: ProductCardProps) {
   return (
-    <article>
-      <div className="mb-2">
-        <Image src={image} alt={title} />
+    <article className="relative">
+      <div className="relative mb-2 pb-[140%]">
+        <Link href={href}>
+          <Image src={image} alt={title} fill />
+        </Link>
       </div>
+      {hasDiscount ? (
+        <div className="absolute right-2 top-2 bg-red-600 px-2 py-1 text-xs font-semibold text-white">
+          СКИДКА
+        </div>
+      ) : isNew ? (
+        <div className="absolute right-2 top-2 bg-emerald-600 px-2 py-1 text-xs font-semibold text-white">
+          НОВИНКА
+        </div>
+      ) : null}
       <div className="mb-2 flex items-center justify-between gap-2">
         <h6 className="text-stone-950">{title}</h6>
       </div>
