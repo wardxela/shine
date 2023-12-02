@@ -35,13 +35,22 @@ const brands = [
   "Puma",
 ];
 
-// function random<T>(arr: T[], count = 1):T {
-//   const seen = new Set<number>();
-//   for (let i = 0; i < count; i++) {
-//     const d = Math.floor(Math.random() * arr.length);
-//   }
-//   // return arr[i];
-// }
+function randomI(len: number) {
+  return Math.floor(Math.random() * len);
+}
+
+function random<T>(arr: T[], count = 1): T[] {
+  const seen = new Set<number>();
+  const result: T[] = [];
+  let d = 0;
+  for (let i = 0; i < count && i < arr.length; i++) {
+    while (!seen.has((d = randomI(arr.length)))) {
+      result.push(arr[d]);
+      seen.add(d);
+    }
+  }
+  return result;
+}
 
 async function main() {
   await db.$transaction(
@@ -83,9 +92,17 @@ async function main() {
           "https://www.dropbox.com/scl/fi/5ykuc0dh1byjcyenh3ds2/6828977756.webp?rlkey=isgsjkfxl4ubou6av83ade7pu&raw=1",
         price: 5940,
         oldPrice: 12939,
-        // brands: [{
-
-        // }]
+        brands: {
+          connect: random(brands, 2).map((brand) => ({ name: brand })),
+        },
+        colors: {
+          connect: random(colors, 2).map((color) => ({ name: color })),
+        },
+        categories: {
+          connect: random(categories, 2).map((category) => ({
+            name: category,
+          })),
+        },
       },
     }),
   ]);
