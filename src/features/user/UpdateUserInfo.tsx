@@ -1,5 +1,5 @@
 import { TextField } from "@/entities/profile";
-import { Button, ErrorBox } from "@/shared/ui/kit";
+import { Button } from "@/shared/ui/kit";
 import { api } from "@/trpc/server";
 import { UpdateUserInfoSchema } from "@/server/api/routers/user";
 import { redirect } from "next/navigation";
@@ -79,7 +79,6 @@ export async function UpdateUserInfo({ error }: { error?: string }) {
             placeholder="Улица, дом, квартира"
             defaultValue={profile.address ?? ""}
           />
-          {error ? <ErrorBox className="col-span-2">{error}</ErrorBox> : null}
         </div>
         <Button
           type="submit"

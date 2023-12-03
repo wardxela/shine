@@ -1,5 +1,5 @@
 import { TextField } from "@/entities/profile";
-import { Button, ErrorBox } from "@/shared/ui/kit";
+import { Button } from "@/shared/ui/kit";
 import { api } from "@/trpc/server";
 import { ChangePasswordSchema } from "@/server/api/routers/user";
 import { redirect } from "next/navigation";
@@ -53,7 +53,6 @@ export function ChangePasswordForm({ error }: { error?: string }) {
             name="password2"
             placeholder="*********"
           />
-          {error ? <ErrorBox className="col-span-2">{error}</ErrorBox> : null}
         </div>
         <Button
           type="submit"
