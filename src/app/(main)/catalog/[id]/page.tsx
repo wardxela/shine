@@ -88,13 +88,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
             </dl>
           </div>
-          <Button
-            disabled={!isAuth}
-            variant="primary"
-            className="mt-auto max-w-xs"
-          >
-            Добавить в корзину
-          </Button>
+          <AddToCart isAuth={isAuth} productId={id} />
         </div>
       </main>
       <section className="py-10">
@@ -122,6 +116,56 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
       </section>
     </div>
+  );
+}
+
+export type AddToCartProps = {
+  isAuth: boolean;
+  productId: number;
+};
+
+async function AddToCart({ isAuth, productId }: AddToCartProps) {
+  if (!isAuth) {
+    return (
+      <Button disabled variant="primary" className="mt-auto max-w-xs">
+        Добавить в корзину
+      </Button>
+    );
+  }
+
+  const isIn = await api.cart.isIn.query({ productId });
+
+  if (isIn) {
+    const removeFromCart = async () => {
+      "use server";
+      await api.cart.remove.mutate({ productId });
+      revalidatePath(`/catalog/${productId}`);
+    };
+    return (
+      <form className="mt-auto">
+        <Button
+          variant="secondary"
+          className="max-w-xs"
+          formAction={removeFromCart}
+        >
+          Удалить из корзины
+        </Button>
+      </form>
+    );
+  }
+
+  const addToCart = async () => {
+    "use server";
+    await api.cart.add.mutate({ productId });
+    revalidatePath(`/catalog/${productId}`);
+  };
+
+  return (
+    <form className="mt-auto">
+      <Button variant="primary" className="max-w-xs" formAction={addToCart}>
+        Добавить в корзину
+      </Button>
+    </form>
   );
 }
 
