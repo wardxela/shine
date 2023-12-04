@@ -21,6 +21,7 @@ export function ProductFavoriteCard({
       <div className="relative mb-3 max-h-96 self-stretch pb-[75%] sm:max-h-none md:pb-[144%]">
         <Link href={href}>
           <Image
+            unoptimized
             src={image}
             className="absolute left-0 top-0 h-full w-full object-cover"
             fill

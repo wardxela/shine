@@ -17,7 +17,7 @@ export function LogoLink({ className, isDark = false }: LogoLinkProps) {
       href="/"
       className={clsx(className, "group flex items-center gap-3 font-bold")}
     >
-      <Image src={isDark ? darkLogo : logo} alt="SHINE" />
+      <Image unoptimized src={isDark ? darkLogo : logo} alt="SHINE" />
       <span
         className={clsx("group-hover:text-amber-500", isDark && "text-white")}
       >

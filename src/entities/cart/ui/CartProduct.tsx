@@ -31,6 +31,7 @@ export function CartProduct({
       <div className="grid gap-5 sm:grid-cols-[200px,1fr]">
         <div className="relative aspect-square">
           <Image
+            unoptimized
             src={img}
             alt={name}
             fill

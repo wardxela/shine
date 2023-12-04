@@ -10,6 +10,7 @@ export default function AboutPage() {
     <main>
       <section className="relative flex h-96 lg:h-screen">
         <Image
+          unoptimized
           src={aboutImg}
           alt="О НАС"
           className="absolute left-0 top-0 -z-10 h-full w-full object-cover brightness-50"
@@ -49,6 +50,7 @@ export default function AboutPage() {
           </div>
           <div className="relative basis-1/2 pb-[100%]">
             <Image
+              unoptimized
               src={aboutImg2}
               alt="Мужчина в смокинге"
               className="absolute left-0 top-0 h-full w-full object-cover"
@@ -58,6 +60,7 @@ export default function AboutPage() {
       </section>
       <div className="relative mb-16 h-32 md:mb-32 md:h-60 lg:h-[500px]">
         <Image
+          unoptimized
           src={aboutImg3}
           alt="Манекены"
           className="absolute left-0 top-0 h-full w-full object-cover"
@@ -78,6 +81,7 @@ export default function AboutPage() {
         </div>
         <div className="relative aspect-video h-full lg:aspect-auto">
           <Image
+            unoptimized
             src={aboutImg4}
             alt="Упорство в работе"
             className="absolute left-0 top-0 h-full w-full object-cover"

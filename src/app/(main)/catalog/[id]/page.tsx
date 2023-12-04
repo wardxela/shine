@@ -34,6 +34,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="w-full flex-shrink-0 self-center sm:basis-60 md:basis-72">
           <div className="relative pb-[140%]">
             <Image
+              unoptimized
               src={product.image}
               alt="product"
               className="absolute left-0 top-0 h-full w-full object-cover"
@@ -74,7 +75,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
               <div className="basis-1/3 space-y-3 pr-2">
                 <dt className="text-stone-500">Цвета</dt>
-                <dd className="font-bold">
+                <dd className="flex flex-wrap gap-1 font-bold">
                   {product.brands.length > 0
                     ? product.colors.map((color) => (
                         <div

@@ -97,6 +97,7 @@ export default function RegisterPage({
       </div>
       <div className="relative hidden sm:block">
         <Image
+          unoptimized
           src={bgImg}
           alt="Туфли"
           className="absolute left-0 top-0 h-full w-full object-cover"

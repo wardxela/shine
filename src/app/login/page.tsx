@@ -13,6 +13,7 @@ export default function LoginPage({
     <main className="h-full">
       <div className="relative h-full w-full overflow-hidden">
         <Image
+          unoptimized
           src={bgImg}
           alt="/"
           className="absolute left-0 top-0 -z-20 hidden h-full w-full object-cover brightness-50 sm:block"
