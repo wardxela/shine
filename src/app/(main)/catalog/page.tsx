@@ -73,7 +73,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
             <span className="text-amber-600">{count}</span> <span>товаров</span>
           </h1>
           {products.length > 0 ? (
-            <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-5">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-5 mb-10">
               {products.map((product) => (
                 <ProductCard
                   key={product.id}
