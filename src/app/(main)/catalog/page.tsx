@@ -60,7 +60,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
   return (
     <main className="pb-14 pt-10">
       <div className="container flex gap-10">
-        <div className="shrink-0 basis-56">
+        <div className="hidden shrink-0 basis-56 sm:block">
           <div className="space-y-14">
             <CategoriesFilter categories={categories} count={count} />
             <PriceFilter />
@@ -96,7 +96,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
             searchParams={searchParams}
             page={currentPage}
             pages={pages}
-            className="mt-auto"
+            className="mt-auto hidden sm:flex"
           />
         </div>
       </div>

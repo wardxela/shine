@@ -34,6 +34,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="w-full flex-shrink-0 self-center sm:basis-60 md:basis-72">
           <div className="relative pb-[140%]">
             <Image
+              unoptimized
               src={product.image}
               alt="product"
               className="absolute left-0 top-0 h-full w-full object-cover"
@@ -74,7 +75,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
               <div className="basis-1/3 space-y-3 pr-2">
                 <dt className="text-stone-500">Цвета</dt>
-                <dd className="font-bold">
+                <dd className="flex flex-wrap gap-1 font-bold">
                   {product.brands.length > 0
                     ? product.colors.map((color) => (
                         <div
@@ -88,13 +89,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
             </dl>
           </div>
-          <Button
-            disabled={!isAuth}
-            variant="primary"
-            className="mt-auto max-w-xs"
-          >
-            Добавить в корзину
-          </Button>
+          <AddToCart isAuth={isAuth} productId={id} />
         </div>
       </main>
       <section className="py-10">
@@ -122,6 +117,56 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
       </section>
     </div>
+  );
+}
+
+export type AddToCartProps = {
+  isAuth: boolean;
+  productId: number;
+};
+
+async function AddToCart({ isAuth, productId }: AddToCartProps) {
+  if (!isAuth) {
+    return (
+      <Button disabled variant="primary" className="mt-auto max-w-xs">
+        Добавить в корзину
+      </Button>
+    );
+  }
+
+  const isIn = await api.cart.isIn.query({ productId });
+
+  if (isIn) {
+    const removeFromCart = async () => {
+      "use server";
+      await api.cart.remove.mutate({ productId });
+      revalidatePath(`/catalog/${productId}`);
+    };
+    return (
+      <form className="mt-auto">
+        <Button
+          variant="secondary"
+          className="max-w-xs"
+          formAction={removeFromCart}
+        >
+          Удалить из корзины
+        </Button>
+      </form>
+    );
+  }
+
+  const addToCart = async () => {
+    "use server";
+    await api.cart.add.mutate({ productId });
+    revalidatePath(`/catalog/${productId}`);
+  };
+
+  return (
+    <form className="mt-auto">
+      <Button variant="primary" className="max-w-xs" formAction={addToCart}>
+        Добавить в корзину
+      </Button>
+    </form>
   );
 }
 

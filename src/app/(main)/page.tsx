@@ -37,7 +37,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             </a>
           </div>
           <div className="hidden p-4 sm:block">
-            <Image src={hero} alt="Пальто" />
+            <Image unoptimized src={hero} alt="Пальто" />
           </div>
         </div>
       </section>
@@ -146,6 +146,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <TextUsForm className="grow" />
           </div>
           <Image
+            unoptimized
             src={textUsImg}
             alt="Напишите нам"
             className="absolute left-0 right-0 top-0 -z-10 h-full w-full object-cover brightness-[0.25] lg:left-1/2 lg:right-0 lg:z-10 lg:w-1/2 lg:brightness-50"

@@ -26,7 +26,9 @@ export const authRouter = createTRPCRouter({
             passwordHash,
           },
         });
-
+        await ctx.db.cart.create({
+          data: { user: { connect: { id: user.id } } },
+        });
         return user.id;
       } catch {
         return null;

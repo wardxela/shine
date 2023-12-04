@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import avatar from "./_img/avatar.png";
+import avatar from "./_img/AVATAR.jpg";
 import { ChangePasswordForm, UpdateUserInfo } from "@/features/user";
 
 type ProfilePageProps = {
@@ -14,8 +14,9 @@ export default function ProfilePage({ searchParams }: ProfilePageProps) {
   return (
     <main className="py-10 pb-20">
       <div className="container mb-20 grid gap-12 md:grid-cols-[3fr,7fr] md:gap-24">
-        <div className="relative aspect-square max-w-xs md:max-w-none">
+        <div className="relative aspect-square w-full max-w-xs md:ml-auto">
           <Image
+            unoptimized
             src={avatar}
             alt="Твой аватар"
             className="absolute left-0 top-0 h-full w-full object-cover"
@@ -51,6 +52,7 @@ function ProductInHistory() {
     <article className="grid grid-cols-[180px,1fr] gap-4">
       <div className="relative aspect-square">
         <Image
+          unoptimized
           src={""}
           alt=""
           className="absolute left-0 top-0 h-full w-full object-cover"
