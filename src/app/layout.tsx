@@ -11,6 +11,8 @@ const openSans = Open_Sans({
   subsets: ["cyrillic", "latin"],
 });
 
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({
   children,
 }: {
