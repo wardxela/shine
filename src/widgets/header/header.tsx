@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { HeaderNavLink } from "./HeaderNavLink";
+import { HeaderNavLink } from "./header-nav-link";
 import { LogoLink } from "@/shared/ui/LogoLink";
 
 import { ReactNode, useEffect, useState } from "react";

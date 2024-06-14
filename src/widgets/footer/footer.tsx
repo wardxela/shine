@@ -1,5 +1,5 @@
 import { Session } from "next-auth";
-import { FooterSiteLink } from "./FooterSiteLink";
+import { FooterSiteLink } from "./footer-site-link";
 import { LogoLink } from "@/shared/ui/LogoLink";
 
 export type FooterProps = {
