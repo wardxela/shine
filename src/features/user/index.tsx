@@ -1,2 +1,2 @@
-export * from "./UpdateUserInfo";
-export * from "./ChangePasswordForm";
+export * from "./update-user-info-form";
+export * from "./change-password-form";

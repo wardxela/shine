@@ -91,7 +91,9 @@ export function MailUsForm() {
             )}
           />
         </div>
-        <Button type="submit">Отправить</Button>
+        <Button type="submit" disabled={form.formState.isSubmitting}>
+          Отправить
+        </Button>
       </form>
     </Form>
   );

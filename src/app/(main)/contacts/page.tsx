@@ -47,7 +47,7 @@ export default function ContactsPage() {
           <ul className="text-center">
             <li>
               <a
-                className="text-xl leading-9 text-stone-500"
+                className="text-xl leading-9 text-neutral-500"
                 href="tel:8 800 555 35 35"
               >
                 Основной: <span className="underline">8 800 555 35 35</span>
@@ -55,7 +55,7 @@ export default function ContactsPage() {
             </li>
             <li>
               <a
-                className="text-xl leading-9 text-stone-500"
+                className="text-xl leading-9 text-neutral-500"
                 href="tel:8 800 555 25 25"
               >
                 Запасной: <span className="underline">8 800 555 25 25</span>
@@ -87,7 +87,7 @@ export default function ContactsPage() {
             </svg>
           </div>
           <h4 className="mb-3 text-2xl">Адрес</h4>
-          <p className="text-center text-xl leading-9 text-stone-500">
+          <p className="text-center text-xl leading-9 text-neutral-500">
             Московская область, город Москва, пл. Балканская, 67
           </p>
         </div>
@@ -110,7 +110,7 @@ export default function ContactsPage() {
           <ul className="text-center">
             <li>
               <a
-                className="text-xl leading-9 text-stone-500"
+                className="text-xl leading-9 text-neutral-500"
                 href="mailto:shine@shine.com"
               >
                 Основная: <span className="underline">shine@shine.com</span>
@@ -118,7 +118,7 @@ export default function ContactsPage() {
             </li>
             <li>
               <a
-                className="text-xl leading-9 text-stone-500"
+                className="text-xl leading-9 text-neutral-500"
                 href="mailto:blessme@shine.com"
               >
                 Запасная: <span className="underline">blessme@shine.com</span>

@@ -1,32 +1,29 @@
 import Image from "next/image";
 
-import avatar from "./_img/AVATAR.jpg";
-import { ChangePasswordForm, UpdateUserInfo } from "@/features/user";
+import avatarSrc from "./_img/AVATAR.jpg";
+import whiteTShirtSrc from "./_img/white.jpg";
+import { ChangePasswordForm, UpdateUserInfoForm } from "@/features/user";
+import { api } from "@/trpc/server";
 
-type ProfilePageProps = {
-  searchParams: {
-    updateInfoError?: string;
-    changePasswordError?: string;
-  };
-};
+export default async function ProfilePage() {
+  const user = await api.user.me.query();
 
-export default function ProfilePage({ searchParams }: ProfilePageProps) {
   return (
     <main className="py-10 pb-20">
-      <div className="container mb-20 grid gap-12 md:grid-cols-[3fr,7fr] md:gap-24">
-        <div className="relative aspect-square w-full max-w-xs md:ml-auto">
+      <div className="container mb-20 flex flex-col gap-12 md:flex-row md:gap-16">
+        <div className="aspect-square w-32 self-start md:w-72">
           <Image
-            src={avatar}
+            src={avatarSrc}
             alt="Твой аватар"
-            className="absolute left-0 top-0 h-full w-full object-cover"
+            className="aspect-square h-full w-full object-cover"
           />
         </div>
-        <div className="max-w-xl">
-          <h1 className="mb-10 text-3xl font-bold">Личный кабинет</h1>
-          <div className="mb-10">
-            <UpdateUserInfo error={searchParams.updateInfoError} />
+        <div className="max-w-xl flex-grow">
+          <h1 className="mb-6 text-2xl font-bold">Личный кабинет</h1>
+          <div className="space-y-8">
+            <UpdateUserInfoForm user={user} />
+            <ChangePasswordForm />
           </div>
-          <ChangePasswordForm error={searchParams.changePasswordError} />
         </div>
       </div>
       <div className="container">
@@ -51,8 +48,8 @@ function ProductInHistory() {
     <article className="grid grid-cols-[180px,1fr] gap-4">
       <div className="relative aspect-square">
         <Image
-          src={""}
-          alt=""
+          src={whiteTShirtSrc}
+          alt="Product"
           className="absolute left-0 top-0 h-full w-full object-cover"
         />
       </div>

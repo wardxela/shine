@@ -73,7 +73,7 @@ export default function AboutPage() {
               Качество — это делать что-либо правильно, даже когда никто не
               смотрит.
             </p>
-            <cite className="text-xl text-stone-600">Генри Форд</cite>
+            <cite className="text-xl text-neutral-600">Генри Форд</cite>
           </blockquote>
         </div>
         <div className="relative aspect-video h-full lg:aspect-auto">

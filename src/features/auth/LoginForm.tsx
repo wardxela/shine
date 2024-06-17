@@ -98,7 +98,9 @@ export function LoginForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Войти</Button>
+        <Button type="submit" disabled={form.formState.isSubmitting}>
+          Войти
+        </Button>
       </form>
     </Form>
   );

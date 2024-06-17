@@ -132,7 +132,11 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="col-span-2">
+        <Button
+          type="submit"
+          className="col-span-2"
+          disabled={form.formState.isSubmitting}
+        >
           Зарегистрироваться
         </Button>
       </form>

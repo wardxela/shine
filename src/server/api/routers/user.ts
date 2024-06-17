@@ -1,19 +1,6 @@
-import { z } from "zod";
-import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure } from "../trpc";
 import { hash, verify } from "argon2";
-
-export const ChangePasswordSchema = z.object({
-  password: z.string().min(4),
-  newPassword: z.string().min(4),
-});
-
-export const UpdateUserInfoSchema = z.object({
-  name: z.string().min(4).optional(),
-  lastName: z.string().min(4).optional(),
-  email: z.string().min(4).email().optional(),
-  phone: z.string().min(4).optional(),
-  address: z.string().min(4).optional(),
-});
+import { changePasswordSchema, updateUserInfoSchema } from "../schemas/user";
 
 export const userRouter = createTRPCRouter({
   me: protectedProcedure.query(async ({ ctx }) => {
@@ -30,7 +17,7 @@ export const userRouter = createTRPCRouter({
     });
   }),
   changePassword: protectedProcedure
-    .input(ChangePasswordSchema)
+    .input(changePasswordSchema)
     .mutation(async ({ ctx, input }) => {
       const user = await ctx.db.user.findUniqueOrThrow({
         where: { id: ctx.session.user.id },
@@ -53,7 +40,7 @@ export const userRouter = createTRPCRouter({
       return true;
     }),
   updateInfo: protectedProcedure
-    .input(UpdateUserInfoSchema)
+    .input(updateUserInfoSchema)
     .mutation(async ({ ctx, input }) => {
       await ctx.db.user.update({
         where: { id: ctx.session.user.id },
