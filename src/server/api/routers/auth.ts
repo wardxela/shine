@@ -7,7 +7,6 @@ export const authRouter = createTRPCRouter({
     .input(registerUserSchema)
     .mutation(async ({ ctx, input }) => {
       const passwordHash = await hash(input.password);
-
       try {
         const user = await ctx.db.user.create({
           data: {
@@ -16,6 +15,7 @@ export const authRouter = createTRPCRouter({
             email: input.email,
             phone: input.phone,
             passwordHash,
+            role: { connect: { name: "user" } },
           },
         });
         await ctx.db.cart.create({

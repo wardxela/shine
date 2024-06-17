@@ -20,6 +20,13 @@ model User {
   passwordHash String
   cart         Cart?
   comments     Comment[]
+  role         Role      @relation(fields: [roleId], references: [name])
+  roleId       String    @default("user")
+}
+
+model Role {
+  name  String @id
+  users User[]
 }
 
 model Cart {
