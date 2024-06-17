@@ -7,7 +7,7 @@ export function FilterTitle({
   ...props
 }: ComponentPropsWithoutRef<"h2">) {
   return (
-    <h2 className={clsx(className, "text-xl font-semibold")} {...props}>
+    <h2 className={clsx(className, "text-lg font-semibold")} {...props}>
       {children}
     </h2>
   );

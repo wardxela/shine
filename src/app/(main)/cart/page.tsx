@@ -97,7 +97,6 @@ export default async function CartPage() {
         <Button type="button" className="mb-4">
           Оплатить
         </Button>
-        <Button type="button">Отменить</Button>
       </div>
     </main>
   );

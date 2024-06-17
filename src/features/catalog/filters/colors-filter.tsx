@@ -18,7 +18,7 @@ export function ColorsFilter({ colors }: ColorsFilterProps) {
 
   return (
     <div>
-      <FilterTitle className="mb-6">Цвет</FilterTitle>
+      <FilterTitle className="mb-5">Цвет</FilterTitle>
       <div className="grid grid-cols-[repeat(4,30px)] gap-4">
         {colors.map((color) => (
           <ColorCheckbox
@@ -28,8 +28,12 @@ export function ColorsFilter({ colors }: ColorsFilterProps) {
             checked={selectedColor === color.name}
             onChange={() => {
               const newURLSearchParams = new URLSearchParams(searchParams);
-              newURLSearchParams.set("color", color.name);
-              router.push(`${path}?${newURLSearchParams}`);
+              if (selectedColor === color.name) {
+                newURLSearchParams.delete("color");
+              } else {
+                newURLSearchParams.set("color", color.name);
+              }
+              router.push(`${path}?${newURLSearchParams}`, { scroll: false });
             }}
           />
         ))}

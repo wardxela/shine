@@ -3,7 +3,7 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
 export const ProductListFiltersSchema = z.object({
   take: z.number().optional(),
-  category: z.string().optional(),
+  categories: z.array(z.string()).optional(),
   brands: z.array(z.string()).optional(),
   priceMin: z.number().optional(),
   priceMax: z.number().optional(),
@@ -28,7 +28,9 @@ export const productRouter = createTRPCRouter({
           },
           categories: {
             some: {
-              name: input.category,
+              name: {
+                in: input.categories,
+              },
             },
           },
           brands: {
@@ -45,8 +47,34 @@ export const productRouter = createTRPCRouter({
     }),
   count: publicProcedure
     .input(ProductListFiltersSchema)
-    .query(async ({ ctx }) => {
-      return await ctx.db.product.count();
+    .query(async ({ ctx, input }) => {
+      return await ctx.db.product.count({
+        where: {
+          price: {
+            gte: input.priceMin,
+            lte: input.priceMax,
+          },
+          colors: {
+            some: {
+              name: input.color,
+            },
+          },
+          categories: {
+            some: {
+              name: {
+                in: input.categories,
+              },
+            },
+          },
+          brands: {
+            some: {
+              name: {
+                in: input.brands,
+              },
+            },
+          },
+        },
+      });
     }),
   getById: publicProcedure
     .input(z.object({ id: z.number() }))

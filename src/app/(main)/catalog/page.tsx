@@ -2,21 +2,21 @@ import {
   CategoriesFilter,
   ColorsFilter,
   PriceFilter,
+  BrandsFilter,
 } from "@/features/catalog";
 
 import { ProductCard } from "@/entities/product";
-import { BrandsFilter } from "@/features/catalog/filters/BrandsFilter";
 import { api } from "@/trpc/server";
 import { Pagination } from "@/shared/ui-old/kit/client";
 
 export type CatalogPageProps = {
   searchParams: {
-    offset?: string;
-    category?: string;
+    categories?: string;
     brands?: string;
     price_from?: string;
     price_to?: string;
     color?: string;
+    offset?: string;
   };
 };
 
@@ -27,19 +27,24 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
   const brandsPromise = api.brand.list.query();
   const colorsPromise = api.color.list.query();
 
-  const productsPromise = api.product.list.query({
-    category: searchParams.category,
-    take: MAX_PRODUCTS_PER_PAGE,
+  const query = {
+    categories:
+      searchParams.categories && searchParams.categories.length > 0
+        ? searchParams.categories?.split(",").filter((c) => c.length > 0)
+        : undefined,
     brands:
       searchParams.brands && searchParams.brands.length > 0
-        ? searchParams.brands?.split(",")
+        ? searchParams.brands?.split(",").filter((b) => b.length > 0)
         : undefined,
     priceMin: searchParams.price_from ? +searchParams.price_from : undefined,
     priceMax: searchParams.price_to ? +searchParams.price_to : undefined,
     color: searchParams.color,
     offset: searchParams.offset ? +searchParams.offset : undefined,
-  });
-  const countPromise = api.product.count.query({});
+    take: MAX_PRODUCTS_PER_PAGE,
+  };
+
+  const productsPromise = api.product.list.query(query);
+  const countPromise = api.product.count.query(query);
 
   const [categories, brands, colors, products, count] = await Promise.all([
     categoriesPromise,
@@ -61,7 +66,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
     <main className="pb-14 pt-10">
       <div className="container flex gap-10">
         <div className="hidden shrink-0 basis-56 sm:block">
-          <div className="space-y-14">
+          <div className="space-y-10">
             <CategoriesFilter categories={categories} count={count} />
             <PriceFilter />
             <BrandsFilter brands={brands} />
@@ -69,8 +74,8 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
           </div>
         </div>
         <div className="flex flex-grow flex-col">
-          <h1 className="mb-7 text-xl font-semibold">
-            <span className="text-amber-600">{count}</span> <span>товаров</span>
+          <h1 className="mb-7 text-lg font-semibold">
+            <span className="text-red-700">{count}</span> <span>товаров</span>
           </h1>
           {products.length > 0 ? (
             <div className="mb-10 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-5">
@@ -88,8 +93,8 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
               ))}
             </div>
           ) : (
-            <p className="fond-bold text-lg text-stone-700">
-              По заданному запросу ничего не найдено :(
+            <p className="fond-bold text-sm text-stone-700">
+              По заданному запросу ничего не найдено
             </p>
           )}
           <Pagination
