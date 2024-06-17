@@ -1,11 +1,11 @@
-import { Button, Checkbox } from "@/shared/ui/kit";
-
 import Image from "next/image";
 import { api } from "@/trpc/server";
 import { notFound } from "next/navigation";
 import { getServerAuthSession } from "@/server/auth";
-import { clsx } from "@/shared/ui/clsx";
 import { revalidatePath } from "next/cache";
+import { Button } from "@/shared/ui/components/button";
+import { Checkbox } from "@/shared/ui/components/checkbox";
+import clsx from "clsx";
 
 export type ProductPageProps = {
   params: { id: string };
@@ -34,7 +34,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="w-full flex-shrink-0 self-center sm:basis-60 md:basis-72">
           <div className="relative pb-[140%]">
             <Image
-              unoptimized
               src={product.image}
               alt="product"
               className="absolute left-0 top-0 h-full w-full object-cover"
@@ -128,7 +127,7 @@ export type AddToCartProps = {
 async function AddToCart({ isAuth, productId }: AddToCartProps) {
   if (!isAuth) {
     return (
-      <Button disabled variant="primary" className="mt-auto max-w-xs">
+      <Button disabled className="mt-auto max-w-xs">
         Добавить в корзину
       </Button>
     );
@@ -163,7 +162,7 @@ async function AddToCart({ isAuth, productId }: AddToCartProps) {
 
   return (
     <form className="mt-auto">
-      <Button variant="primary" className="max-w-xs" formAction={addToCart}>
+      <Button className="max-w-xs" formAction={addToCart}>
         Добавить в корзину
       </Button>
     </form>
@@ -200,11 +199,9 @@ function LeaveComment({ isAuth, productId }: LeaveCommentProps) {
           placeholder="Качественный, удобный и привлекательный."
         ></textarea>
       </label>
-      <Checkbox name="is_positive" disabled={!isAuth} label="Положительный" />
+      <Checkbox name="is_positive" disabled={!isAuth} />
       <div className="max-w-xs">
-        <Button variant="primary" disabled={!isAuth}>
-          Отправить
-        </Button>
+        <Button disabled={!isAuth}>Отправить</Button>
       </div>
       {!isAuth ? (
         <p className="text-red-500">Чтобы оставить отзыв, войдите в аккаунт</p>

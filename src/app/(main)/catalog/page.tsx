@@ -7,7 +7,7 @@ import {
 import { ProductCard } from "@/entities/product";
 import { BrandsFilter } from "@/features/catalog/filters/BrandsFilter";
 import { api } from "@/trpc/server";
-import { Pagination } from "@/shared/ui/kit/client";
+import { Pagination } from "@/shared/ui-old/kit/client";
 
 export type CatalogPageProps = {
   searchParams: {
@@ -73,7 +73,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
             <span className="text-amber-600">{count}</span> <span>товаров</span>
           </h1>
           {products.length > 0 ? (
-            <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-5 mb-10">
+            <div className="mb-10 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-5">
               {products.map((product) => (
                 <ProductCard
                   key={product.id}
@@ -106,5 +106,5 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
 
 export const metadata = {
   title: "Каталог",
-  description: "Каталог одежды ШАЙН",
+  description: "Каталог одежды SHINE",
 };

@@ -1,4 +1,4 @@
-import { clsx } from "@/shared/ui/clsx";
+import clsx from "clsx";
 import { ComponentPropsWithoutRef } from "react";
 
 export function FilterTitle({

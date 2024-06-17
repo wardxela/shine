@@ -24,7 +24,7 @@ export function ProductCard({
     <article className="relative">
       <div className="relative mb-2 pb-[140%]">
         <Link href={href}>
-          <Image unoptimized src={image} alt={title} fill />
+          <Image src={image} alt={title} fill />
         </Link>
       </div>
       {hasDiscount ? (

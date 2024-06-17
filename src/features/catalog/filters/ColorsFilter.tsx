@@ -1,6 +1,6 @@
 "use client";
 
-import { ColorCheckbox } from "@/shared/ui/kit/client";
+import { ColorCheckbox } from "@/shared/ui-old/kit/ColorCheckbox";
 import { FilterTitle } from "../FilterTitle";
 import { RouterOutputs } from "@/trpc/shared";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";

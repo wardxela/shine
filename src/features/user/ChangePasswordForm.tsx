@@ -1,8 +1,8 @@
 import { TextField } from "@/entities/profile";
-import { Button } from "@/shared/ui/kit";
 import { api } from "@/trpc/server";
 import { ChangePasswordSchema } from "@/server/api/routers/user";
 import { redirect } from "next/navigation";
+import { Button } from "@/shared/ui/components/button";
 
 export function ChangePasswordForm({ error }: { error?: string }) {
   async function changePassword(data: FormData) {
@@ -54,11 +54,7 @@ export function ChangePasswordForm({ error }: { error?: string }) {
             placeholder="*********"
           />
         </div>
-        <Button
-          type="submit"
-          variant="primary-dark-bordered"
-          className="max-w-xs"
-        >
+        <Button type="submit" className="max-w-xs">
           Сохранить
         </Button>
       </form>

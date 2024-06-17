@@ -1,10 +1,10 @@
 "use client";
 
-import { clsx } from "@/shared/ui/clsx";
-import { RadioButton, RadioButtonGroup } from "@/shared/ui/kit/client";
+import { RadioGroup, RadioGroupItem } from "@/shared/ui/components/radio-group";
 import { FilterTitle } from "../FilterTitle";
 import { RouterOutputs } from "@/trpc/shared";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import clsx from "clsx";
 
 export type CategoriesFilterProps = {
   categories: RouterOutputs["category"]["list"];
@@ -22,9 +22,9 @@ export function CategoriesFilter({ categories, count }: CategoriesFilterProps) {
     <div>
       <FilterTitle className="mb-6">Категории</FilterTitle>
       <div className="space-y-3">
-        <RadioButtonGroup
-          selected={selectedCategory || ""}
-          onChange={(category) => {
+        <RadioGroup
+          value={selectedCategory || ""}
+          onValueChange={(category) => {
             const newURLSearchParams = new URLSearchParams(searchParams);
             if (category === "Все") {
               newURLSearchParams.delete("category");
@@ -34,23 +34,23 @@ export function CategoriesFilter({ categories, count }: CategoriesFilterProps) {
             router.push(`${path}?${newURLSearchParams}`);
           }}
         >
-          <RadioButton value="Все">
+          <RadioGroupItem value="Все">
             <CategoryRadioButton
               name="Все"
               count={count}
               selected={!searchParams.get("category")}
             />
-          </RadioButton>
+          </RadioGroupItem>
           {categories.map((category) => (
-            <RadioButton key={category.id} value={category.name}>
+            <RadioGroupItem key={category.id} value={category.name}>
               <CategoryRadioButton
                 name={category.name}
                 count={category._count.products}
                 selected={selectedCategory === category.name}
               />
-            </RadioButton>
+            </RadioGroupItem>
           ))}
-        </RadioButtonGroup>
+        </RadioGroup>
       </div>
     </div>
   );

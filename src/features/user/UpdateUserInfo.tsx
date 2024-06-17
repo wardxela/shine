@@ -1,8 +1,8 @@
 import { TextField } from "@/entities/profile";
-import { Button } from "@/shared/ui/kit";
 import { api } from "@/trpc/server";
 import { UpdateUserInfoSchema } from "@/server/api/routers/user";
 import { redirect } from "next/navigation";
+import { Button } from "@/shared/ui/components/button";
 
 export async function UpdateUserInfo({ error }: { error?: string }) {
   const profile = await api.user.me.query();
@@ -80,11 +80,7 @@ export async function UpdateUserInfo({ error }: { error?: string }) {
             defaultValue={profile.address ?? ""}
           />
         </div>
-        <Button
-          type="submit"
-          variant="primary-dark-bordered"
-          className="max-w-xs"
-        >
+        <Button type="submit" className="max-w-xs">
           Сохранить
         </Button>
       </form>

@@ -1,9 +1,9 @@
 "use client";
 
-import { clsx } from "@/shared/ui/clsx";
 import { ComponentPropsWithRef, forwardRef, useId, useState } from "react";
 import { FilterTitle } from "../FilterTitle";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import clsx from "clsx";
 
 export function PriceFilter() {
   const router = useRouter();

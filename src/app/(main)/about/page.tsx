@@ -10,7 +10,6 @@ export default function AboutPage() {
     <main>
       <section className="relative flex h-96 lg:h-screen">
         <Image
-          unoptimized
           src={aboutImg}
           alt="О НАС"
           className="absolute left-0 top-0 -z-10 h-full w-full object-cover brightness-50"
@@ -20,14 +19,14 @@ export default function AboutPage() {
             О НАС
           </h1>
           <p className="text-white md:text-xl">
-            ШАЙН - лучшее ателье в твоем городе
+            SHINE - лучшее ателье в твоем городе
           </p>
         </div>
       </section>
       <section className="px-4">
         <div className="mx-auto flex w-full max-w-5xl -translate-y-20 flex-col bg-white shadow-2xl md:flex-row lg:-translate-y-[calc(20vh)]">
           <div className="basis-1/2 p-10">
-            <h1 className="mb-10 text-3xl font-bold">ШАЙН</h1>
+            <h1 className="mb-10 text-3xl font-bold">SHINE</h1>
             <div className="space-y-5 leading-7 text-stone-900">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               <p>
@@ -50,7 +49,6 @@ export default function AboutPage() {
           </div>
           <div className="relative basis-1/2 pb-[100%]">
             <Image
-              unoptimized
               src={aboutImg2}
               alt="Мужчина в смокинге"
               className="absolute left-0 top-0 h-full w-full object-cover"
@@ -60,7 +58,6 @@ export default function AboutPage() {
       </section>
       <div className="relative mb-16 h-32 md:mb-32 md:h-60 lg:h-[500px]">
         <Image
-          unoptimized
           src={aboutImg3}
           alt="Манекены"
           className="absolute left-0 top-0 h-full w-full object-cover"
@@ -81,7 +78,6 @@ export default function AboutPage() {
         </div>
         <div className="relative aspect-video h-full lg:aspect-auto">
           <Image
-            unoptimized
             src={aboutImg4}
             alt="Упорство в работе"
             className="absolute left-0 top-0 h-full w-full object-cover"
@@ -94,5 +90,5 @@ export default function AboutPage() {
 
 export const metadata = {
   title: "О нас",
-  description: "ШАЙН - лучшее ателье в твоем городе",
+  description: "SHINE - лучшее ателье в твоем городе",
 };

@@ -1,13 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { HeaderNavLink } from "./header-nav-link";
-import { LogoLink } from "@/shared/ui/LogoLink";
 
 import { ReactNode, useEffect, useState } from "react";
-import { clsx } from "@/shared/ui/clsx";
 import { usePathname } from "next/navigation";
 import { Session } from "next-auth";
+import { LogoLink } from "@/shared/ui-old/LogoLink";
+import clsx from "clsx";
+import { Button } from "@/shared/ui/components/button";
+import Link from "next/link";
 
 export type HeaderProps = {
   session: Session | null;
@@ -58,16 +59,13 @@ export function Header({ session, cartCount }: HeaderProps) {
             </ul>
           </nav>
           {isAuthenticated ? null : (
-            <div className="ml-auto hidden lg:block">
-              <Link href="/login" className="px-4 py-2">
+            <div className="ml-auto hidden items-center lg:flex">
+              <HeaderNavLink href="/login" className="px-4 py-2">
                 Войти
-              </Link>
-              <Link
-                href="/register"
-                className="bg-stone-900 px-4 py-2 text-white"
-              >
-                Зарегистрироваться
-              </Link>
+              </HeaderNavLink>
+              <Button asChild>
+                <Link href="/register">Зарегистрироваться</Link>
+              </Button>
             </div>
           )}
           <div
@@ -78,7 +76,7 @@ export function Header({ session, cartCount }: HeaderProps) {
           >
             {isAuthenticated ? (
               <>
-                <Link href="/profile" className="z-50">
+                <HeaderNavLink href="/profile" className="z-50">
                   <svg
                     width="20"
                     height="21"
@@ -86,15 +84,15 @@ export function Header({ session, cartCount }: HeaderProps) {
                     xmlns="http://www.w3.org/2000/svg"
                     className={clsx(
                       path === "/profile"
-                        ? "fill-orange-600 stroke-orange-600"
+                        ? "fill-red-700 stroke-red-700"
                         : "fill-black stroke-black",
                     )}
                   >
                     <circle cx="9.72342" cy="5.23404" r="5.23404" />
                     <path d="M17.6997 20.5H2.0994C1.50979 20.5 1.0455 19.9915 1.12287 19.407C1.79677 14.3161 3.68517 12.2332 10.1596 12.2128C16.6158 12.1924 17.7261 14.1474 18.6785 19.3332C18.7903 19.9419 18.3186 20.5 17.6997 20.5Z" />
                   </svg>
-                </Link>
-                <Link href="/cart" className="relative z-50">
+                </HeaderNavLink>
+                <HeaderNavLink href="/cart" className="relative z-50">
                   {cartCount}
                   <svg
                     width="20"
@@ -104,7 +102,7 @@ export function Header({ session, cartCount }: HeaderProps) {
                     xmlns="http://www.w3.org/2000/svg"
                     className={clsx(
                       path === "/cart"
-                        ? "fill-orange-600 stroke-orange-600"
+                        ? "fill-red-700 stroke-red-700"
                         : "fill-black stroke-black",
                     )}
                   >
@@ -114,7 +112,7 @@ export function Header({ session, cartCount }: HeaderProps) {
                       <circle id="Ellipse 2" cx="15" cy="16" r="1" />
                     </g>
                   </svg>
-                </Link>
+                </HeaderNavLink>
               </>
             ) : null}
             <button

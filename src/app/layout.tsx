@@ -1,12 +1,13 @@
 import "./globals.css";
 
-import { Open_Sans } from "next/font/google";
+import { Noto_Sans_Display, Poppins } from "next/font/google";
 import { cookies } from "next/headers";
-import { clsx } from "@/shared/ui/clsx";
 
 import { TRPCReactProvider } from "@/trpc/client";
+import clsx from "clsx";
+import { Toaster } from "@/shared/ui/components/sonner";
 
-const openSans = Open_Sans({
+const notoSansDisplay = Noto_Sans_Display({
   weight: ["400", "600", "700"],
   subsets: ["cyrillic", "latin"],
 });
@@ -19,17 +20,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ru" className={clsx("h-full", openSans.className)}>
+    <html lang="ru" className={clsx("h-full", notoSansDisplay.className)}>
       <body className="h-full">
         <TRPCReactProvider cookies={cookies().toString()}>
           {children}
         </TRPCReactProvider>
+        <Toaster />
       </body>
     </html>
   );
 }
 
 export const metadata = {
-  title: "ШАЙН",
+  title: "SHINE",
   description: "Ателье сайт",
 };

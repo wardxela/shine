@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { clsx } from '@/shared/ui/clsx';
-import Link, { LinkProps } from 'next/link';
-import { usePathname } from 'next/navigation';
-import { ComponentPropsWithoutRef } from 'react';
+import clsx from "clsx";
+import Link, { LinkProps } from "next/link";
+import { usePathname } from "next/navigation";
+import { ComponentPropsWithoutRef } from "react";
 
 export type HeaderNavLinkProps = Omit<
-  ComponentPropsWithoutRef<'a'>,
+  ComponentPropsWithoutRef<"a">,
   keyof LinkProps
 > &
   LinkProps;
@@ -25,9 +25,9 @@ export function HeaderNavLink({
     <Link
       {...props}
       href={href}
-      className={clsx(className, {
-        'text-stone-950 hover:text-amber-500': !isActive,
-        'text-amber-500': isActive,
+      className={clsx(className, "transition-colors", {
+        "text-neutral-700 hover:text-red-700": !isActive,
+        "text-red-700": isActive,
       })}
     >
       {children}

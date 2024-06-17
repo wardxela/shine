@@ -1,18 +1,10 @@
-import { z } from "zod";
 import { hash } from "argon2";
 import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const UserRegisterInputSchema = z.object({
-  name: z.string().min(1),
-  lastName: z.string().min(1),
-  email: z.string().email(),
-  phone: z.string().min(1),
-  password: z.string().min(4),
-});
+import { registerUserSchema } from "../schemas/auth";
 
 export const authRouter = createTRPCRouter({
   register: publicProcedure
-    .input(UserRegisterInputSchema)
+    .input(registerUserSchema)
     .mutation(async ({ ctx, input }) => {
       const passwordHash = await hash(input.password);
 

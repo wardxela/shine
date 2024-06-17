@@ -1,9 +1,7 @@
 import { CartProduct } from "@/entities/cart";
-import tShirt from "./_img/tshirt.png";
-import { Button } from "@/shared/ui/kit";
-import { getServerAuthSession } from "@/server/auth";
 import { api } from "@/trpc/server";
 import { Fragment } from "react";
+import { Button } from "@/shared/ui/components/button";
 
 export default async function CartPage() {
   const countPromise = api.cart.count.query();
@@ -96,12 +94,10 @@ export default async function CartPage() {
             </dl>
           </div>
         </div>
-        <Button type="button" variant="primary" className="mb-4">
+        <Button type="button" className="mb-4">
           Оплатить
         </Button>
-        <Button type="button" variant="secondary">
-          Отменить
-        </Button>
+        <Button type="button">Отменить</Button>
       </div>
     </main>
   );

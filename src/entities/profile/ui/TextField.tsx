@@ -1,7 +1,7 @@
 "use client";
 
 import { Merge } from "@/shared/type-utils";
-import { clsx } from "@/shared/ui/clsx";
+import clsx from "clsx";
 import { ComponentPropsWithoutRef, useId } from "react";
 
 export type TextFieldProps = Merge<

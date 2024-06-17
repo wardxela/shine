@@ -1,10 +1,10 @@
 "use client";
 
-import { Checkbox } from "@/shared/ui/kit";
+import { Checkbox } from "@/shared/ui/components/checkbox";
 import { FilterTitle } from "../FilterTitle";
 import { RouterOutputs } from "@/trpc/shared";
-import { clsx } from "@/shared/ui/clsx";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import clsx from "clsx";
 
 export type BrandsFilterProps = {
   brands: RouterOutputs["brand"]["list"];
@@ -26,13 +26,14 @@ export function BrandsFilter({ brands }: BrandsFilterProps) {
         {brands.map((brand) => (
           <div key={brand.id} className="flex items-center justify-between">
             <Checkbox
-              label={brand.name}
+              // label={brand.name}
               value={brand.name}
               checked={selectedBrandsSet.has(brand.name)}
               onChange={(e) => {
                 const newURLSearchParams = new URLSearchParams(searchParams);
                 newURLSearchParams.set(
                   "brands",
+                  // @ts-expect-error TODO
                   e.currentTarget.checked
                     ? selectedBrands
                       ? selectedBrands + `,${e.currentTarget.value}`
