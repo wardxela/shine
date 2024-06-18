@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "dropbox.com",
+        hostname: "lh3.googleusercontent.com",
         port: "",
       },
     ],

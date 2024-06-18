@@ -1,9 +1,7 @@
 "use client";
 
-import { ComponentPropsWithRef, forwardRef, useId, useState } from "react";
 import { FilterTitle } from "../FilterTitle";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import clsx from "clsx";
 import { Slider } from "@/shared/ui/components/slider";
 
 export function PriceFilter() {
@@ -16,8 +14,8 @@ export function PriceFilter() {
     1,
   );
   const to = forceValidPrice(
-    parseInt(searchParams.get("price_to") ?? "1000000"),
-    1000000,
+    parseInt(searchParams.get("price_to") ?? "100000"),
+    100000,
   );
 
   return (
@@ -27,7 +25,7 @@ export function PriceFilter() {
         minStepsBetweenThumbs={1}
         defaultValue={[from, to]}
         min={1}
-        max={1_000_000}
+        max={100000}
         step={100}
         onValueCommit={(value) => {
           const newURLSearchParams = new URLSearchParams(searchParams);
@@ -55,7 +53,7 @@ const forceValidPrice = (value: number, defaultValue: number) => {
   if (value < 1) {
     return defaultValue;
   }
-  if (value > 1_000_000) {
+  if (value > 100000) {
     return defaultValue;
   }
   return value;

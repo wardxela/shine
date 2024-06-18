@@ -3,6 +3,7 @@ import {
   ColorsFilter,
   PriceFilter,
   BrandsFilter,
+  CatalogPagination,
 } from "@/features/catalog";
 
 import { ProductCard } from "@/entities/product";
@@ -97,12 +98,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
               По заданному запросу ничего не найдено
             </p>
           )}
-          <Pagination
-            searchParams={searchParams}
-            page={currentPage}
-            pages={pages}
-            className="mt-auto hidden sm:flex"
-          />
+          <CatalogPagination page={currentPage} pages={pages} />
         </div>
       </div>
     </main>

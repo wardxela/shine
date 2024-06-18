@@ -58,14 +58,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           <div className="h-1/3 w-1/2 translate-y-full -rotate-45 rounded-full bg-gradient-to-r from-orange-300 to-red-300 opacity-25 blur-3xl"></div>
         </div>
       </section>
-      {/* <section className="mb-20">
+      <section className="mb-48">
         <div className="container">
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-r from-neutral-900 to-neutral-800 rounded-full blur-2xl"></div>
-      </section>
-      {/* <section className="mb-20">
-        <div className="container">
-          <SectionTitle className="mb-14">Наши работы</SectionTitle>
-          <div className="mb-10 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] justify-between gap-10">
+          <h2 className="mb-10 text-center text-4xl font-bold">Наши работы</h2>
+          <div className="mb-10 grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {products.map((product) => (
               <ProductFavoriteCard
                 key={product.id}
@@ -78,15 +74,12 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             ))}
           </div>
           <div className="grid justify-center">
-            <Link
-              href="/catalog"
-              className="inline-block border-2 border-amber-950 px-16 py-4 text-xl transition-colors hover:bg-amber-950 hover:text-white"
-            >
-              Смотреть
-            </Link>
+            <Button asChild>
+              <Link href="/catalog">Смотреть</Link>
+            </Button>
           </div>
         </div>
-      </section> */}
+      </section>
       <section className="mb-48">
         <div className="container flex flex-col items-center">
           <h2 className="mb-4 text-center text-4xl font-bold">

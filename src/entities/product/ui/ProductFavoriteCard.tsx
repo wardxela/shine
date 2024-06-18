@@ -18,7 +18,7 @@ export function ProductFavoriteCard({
 }: ProductFavoriteCardProps) {
   return (
     <article className="flex flex-col items-center text-center">
-      <div className="relative mb-3 max-h-96 self-stretch pb-[75%] sm:max-h-none md:pb-[144%]">
+      <div className="relative mb-2 max-h-96 self-stretch pb-[75%] sm:max-h-none md:pb-[144%]">
         <Link href={href}>
           <Image
             src={image}
@@ -28,11 +28,13 @@ export function ProductFavoriteCard({
           />
         </Link>
       </div>
-      <h6 className="mb-2 text-xl">{title}</h6>
+      <h6 className="mb-1">{title}</h6>
       <p className="space-x-2">
-        <span className="text-stone-950 text-opacity-75">{price} руб.</span>
+        <span className="text-sm text-neutral-950 text-opacity-75">
+          {price} руб.
+        </span>
         {oldPrice ? (
-          <span className="text-stone-500 text-opacity-50 line-through">
+          <span className="text-neutral-500 text-opacity-50 line-through">
             {oldPrice} руб.
           </span>
         ) : null}
