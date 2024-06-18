@@ -10,7 +10,7 @@
     "lint:fix": "next lint --fix",
     "typecheck": "tsc",
     "seed": "ts-node scripts/seed.ts",
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && npm rebuild argon2 --build-from-source",
     "prepare": "husky"
   },
   "prisma": {
